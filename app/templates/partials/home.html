@@ -1,0 +1,26 @@
+<div ng-cloak ng-controller="JobController as jobctrl" ng-init="jobctrl.getActiveJobs()">
+
+  <div class="row addbar">
+    <div class="twelve columns"><job-form type="new" job="{}"></job-form></div>
+  </div>
+
+  <div class="row graph">
+    <div class="twelve columns">Graph</div>
+  </div>
+
+  <div class="row">
+    <div class="three columns jobbutton">Today</div>
+    <div class="three columns jobbutton">In Proccess</div>
+    <div class="three columns jobbutton">Backlog</div>
+    <div class="three columns jobbutton">Applied</div>
+  </div>
+
+  <div class="row">
+    <div class="six columns jobs">
+      <job-list jobs="jobctrl.jobs" today="jobctrl.today"></job-list>
+    </div>
+    <div class="six columns events">Events</div>
+
+  </div>
+
+</div>

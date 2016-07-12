@@ -1,0 +1,31 @@
+.addbar {
+  height: 80px;
+  background-color: lightgray;
+  margin-top: 20px;
+  margin-bottom: 10px
+}
+
+.graph {
+  height: 200px;
+  background-color: lightgray;
+  margin-bottom: 10px
+}
+
+.events {
+  height: 200px;
+  background-color: lightgray;
+}
+
+.jobs {
+  background-color: lightgray;
+}
+
+.jobbutton {
+  height: 80px;
+  background-color: lightgray;
+  margin-bottom: 10px;
+}
+
+ul[dnd-list], ul[dnd-list] > li {
+    position: relative;
+}

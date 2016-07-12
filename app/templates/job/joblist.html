@@ -1,0 +1,28 @@
+
+
+<ul dnd-list="jobs">
+<li ng-repeat="job in jobs"
+   dnd-draggable="job"
+   dnd-moved="job.splice($index, 1)"
+   dnd-effect-allowed="move"
+   dnd-selected="models.selected = job"
+   ng-class="{'selected': models.selected === job}"
+   >
+   {{job.title}}
+   {{job.company}}
+</li>
+</ul>
+<hr />
+<br />
+<ul dnd-list="today">
+<li ng-repeat="job in today"
+   dnd-draggable="job"
+   dnd-moved="job.splice($index, 1)"
+   dnd-effect-allowed="move"
+   dnd-selected="models.selected = job"
+   ng-class="{'selected': models.selected === job}"
+   >
+   {{job.title}}
+   {{job.company}}
+</li>
+</ul>

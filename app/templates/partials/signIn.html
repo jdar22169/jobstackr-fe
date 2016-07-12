@@ -1,0 +1,9 @@
+<main ng-controller="AuthController as authctrl">
+  <h1> SIGN IN </h1>
+  <form ng-submit="authctrl.signIn(authctrl.newUser)">
+    <input type="text" ng-model="authctrl.newUser.username" placeholder="username">
+    <input type="password" ng-model="authctrl.newUser.password" placeholder="password">
+    <button type="submit">SIGN IN</button>
+  </form>
+
+</main>
