@@ -10,7 +10,10 @@ module.exports = function (app) {
 
     service.getToday = function (jobs) {
       return jobs.filter(function (j) {
-        return (j.isToday != true && j.statusValue == 0 );
+        if (j.isToday == true && j.statusValue == 0 ){
+          j.list = 'today';
+          return j;
+        }
       });
     };
 
@@ -22,13 +25,19 @@ module.exports = function (app) {
 
     service.applied = function(jobs){
       return jobs.filter(function (j) {
-        return (j.statusValue == 1);
+        if (j.statusValue == 1){
+          j.list = 'applied';
+          return j;
+        }
       });
     };
 
     service.inprocess = function(jobs){
       return jobs.filter(function (j) {
-        return (j.statusValue > 1);
+        if (j.statusValue > 1) {
+          j.list = 'inprocess'
+          return j
+        }
       });
     };
 
