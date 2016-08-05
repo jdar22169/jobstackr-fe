@@ -106,3 +106,4 @@ tags
 build
 public
 test/test_bundle.js
+dist

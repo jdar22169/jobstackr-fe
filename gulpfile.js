@@ -4,6 +4,8 @@ const webpack = require('webpack-stream');
 const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 const wp = require('webpack');
+const babel = require('gulp-babel')
+//require('babel-preset-es2015')
 
 var settings = {
   productionApiUri: 'https://powerful-hollows-96528.herokuapp.com/',
@@ -69,7 +71,10 @@ gulp.task('bundle', () => {
         filename: 'bundle.js'
       },
       plugins: [webpackplugin]
-    }))
+    }))        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(gulp.dest('dist'))
     .pipe(gulp.dest(paths.build.main));
 });
 
