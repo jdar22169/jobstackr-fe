@@ -16,7 +16,13 @@ module.exports = function (app) {
     this.joblist = [];
 
 
-
+    //move a job from one list to another
+    this.move = function (oldlist, newlist, job) {
+      console.log("movving");
+      let index = this[oldlist].indexOf(job);
+      this[oldlist].splice(index, 1);
+      this[newlist].push(job)
+    };
 
     this.getLink = function (link) {
       $http({
@@ -99,6 +105,11 @@ module.exports = function (app) {
         .then((res) => {
           if (!this.jobCard.job.events) this.jobCard.job.events = [];
           this.jobCard.job.events.push(res.data);
+          if (this.jobCard.job.events.length == 1) var newlist = "applied";
+          if (this.jobCard.job.events.length > 1) var newlist = "inprocess";
+          console.log('newlist', newlist);
+          console.log('oldlist', this.jobCard.job);
+          this.move(this.jobCard.job.list, newlist, this.jobCard.job);
         }, (err) => {
           console.log(err);
         });
