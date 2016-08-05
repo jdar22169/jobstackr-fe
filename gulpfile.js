@@ -4,6 +4,8 @@ const webpack = require('webpack-stream');
 const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 const wp = require('webpack');
+const babel = require('gulp-babel');
+
 
 var settings = {
   productionApiUri: 'https://powerful-hollows-96528.herokuapp.com/',
@@ -57,9 +59,12 @@ gulp.task('staticcssfiles:production', () => {
     .pipe(gulp.dest(paths.production.main));
 });
 
-
 gulp.task('bundle', () => {
-  var webpackplugin = new wp.DefinePlugin({'process.env':{URI: JSON.stringify(settings.localApiUri)}});
+  var webpackplugin = new wp.DefinePlugin({
+    'process.env': {
+      URI: JSON.stringify(settings.localApiUri)
+    }
+  });
   return gulp.src(__dirname + '/app/js/client.js')
     .pipe(plumber({
       errorHandler: notify.onError('Error: <%= error.message %>')
@@ -69,12 +74,19 @@ gulp.task('bundle', () => {
         filename: 'bundle.js'
       },
       plugins: [webpackplugin]
+    })).pipe(babel({
+      presets: ['es2015']
     }))
+    .pipe(gulp.dest('dist'))
     .pipe(gulp.dest(paths.build.main));
 });
 
 gulp.task('bundle:production', () => {
-  var webpackplugin = new wp.DefinePlugin({'process.env':{URI: JSON.stringify(settings.productionApiUri)}});
+  var webpackplugin = new wp.DefinePlugin({
+    'process.env': {
+      URI: JSON.stringify(settings.productionApiUri)
+    }
+  });
   return gulp.src(__dirname + '/app/js/client.js')
     .pipe(plumber({
       errorHandler: notify.onError('Error: <%= error.message %>')
@@ -84,27 +96,31 @@ gulp.task('bundle:production', () => {
         filename: 'bundle.js'
       },
       plugins: [webpackplugin]
+    })).pipe(babel({
+      presets: ['es2015']
     }))
     .pipe(gulp.dest(paths.production.main));
 });
 
-
-
 gulp.task('bundle:test', () => {
-  var webpackplugin = new wp.DefinePlugin({'process.env':{URI: JSON.stringify(settings.localApiUri)}});
+  var webpackplugin = new wp.DefinePlugin({
+    'process.env': {
+      URI: JSON.stringify(settings.localApiUri)
+    }
+  });
   return gulp.src(paths.dev.test)
-  .pipe(plumber({
-    errorHandler: notify.onError('Error: <%= error.message %>')
-  }))
+    .pipe(plumber({
+      errorHandler: notify.onError('Error: <%= error.message %>')
+    }))
     .pipe(webpack({
       output: {
         filename: 'test_bundle.js'
       },
       plugins: [webpackplugin],
-      module:{
-        loaders:[{
-          test:/\.html$/,
-          loader:'html'
+      module: {
+        loaders: [{
+          test: /\.html$/,
+          loader: 'html'
         }]
       }
     }))
