@@ -20,7 +20,8 @@ module.exports = function (app) {
       scope: {
         backlog: '=',
         today: '=',
-        backlogshow: '='
+        backlogshow: '=',
+        listtitle: '@'
 
       },
       require: '^^ngController',
@@ -31,6 +32,7 @@ module.exports = function (app) {
           let delta = updateListItem(newModel, oldModel);
           if (delta.length == 1) {
             delta[0].isToday = true;
+            delta[0].list = 'today';
             controller.updateJobs(delta[0]);
           }
         }, true);
@@ -39,6 +41,7 @@ module.exports = function (app) {
           let delta = updateListItem(newModel, oldModel);
           if (delta.length == 1) {
             delta[0].isToday = false;
+            delta[0].list = 'backlog';
             controller.updateJobs(delta[0]);
           }
         }, true);

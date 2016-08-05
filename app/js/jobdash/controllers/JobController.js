@@ -1,7 +1,6 @@
-'use strict';
 module.exports = function (app) {
-  let url = process.env.URI;
-  app.controller('JobController', function ($http, AuthService, sortJobs, globals) {
+  var url = process.env.URI;
+  app.controller('JobController', function ($http, AuthService, sortJobs) {
     this.$http = $http;
     this.jobs = [];
     this.events = [];
@@ -16,8 +15,16 @@ module.exports = function (app) {
     this.linkApiJob = {};
     this.joblist = [];
 
-    this.getLink = function (link) {
 
+    //move a job from one list to another
+    this.move = function (oldlist, newlist, job) {
+      console.log("movving");
+      let index = this[oldlist].indexOf(job);
+      this[oldlist].splice(index, 1);
+      this[newlist].push(job)
+    };
+
+    this.getLink = function (link) {
       $http({
         method: 'POST',
         data: link,
@@ -63,8 +70,6 @@ module.exports = function (app) {
               this.backlog = sortJobs.attachEvents(this.backlog, this.events);
               this.inprocess = sortJobs.attachEvents(this.inprocess, this.events);
               this.applied = sortJobs.attachEvents(this.applied, this.events);
-
-
             }, (err) => {
               console.log(err);
             });
@@ -99,6 +104,11 @@ module.exports = function (app) {
         .then((res) => {
           if (!this.jobCard.job.events) this.jobCard.job.events = [];
           this.jobCard.job.events.push(res.data);
+          if (this.jobCard.job.events.length == 1) var newlist = "applied";
+          if (this.jobCard.job.events.length > 1) var newlist = "inprocess";
+          console.log('newlist', newlist);
+          console.log('oldlist', this.jobCard.job);
+          this.move(this.jobCard.job.list, newlist, this.jobCard.job);
         }, (err) => {
           console.log(err);
         });
