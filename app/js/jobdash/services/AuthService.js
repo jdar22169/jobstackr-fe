@@ -1,13 +1,15 @@
 module.exports = function(app) {
   app.factory('AuthService', function($http, $window, $location) {
     let token = $window.localStorage.token;
+    let url = process.env.URI;
     const service = {};
 
     service.signUp = function(user) {
-      return $http.post('http://localhost:3000/signup', user)
+      return $http.post(url + 'signup', user)
         .then((res) => {
           token = res.data.token;
           $window.localStorage.token = token;
+          $location.url('/');
           return res;
         }, (err) => {
           console.log(err);
@@ -20,7 +22,7 @@ module.exports = function(app) {
       let authString = 'Basic ' + base64Auth;
       console.log('in service sign in');
       return $http({
-        url: 'http://localhost:3000/signin',
+        url: url + 'signin',
         method: 'POST',
         headers: {
           authorization: authString
@@ -29,6 +31,7 @@ module.exports = function(app) {
         console.log('in service signin then');
         token = res.data.token;
         $window.localStorage.token = token;
+        $location.url('/');
         return res;
       }, (err) => {
         console.log(err);
@@ -41,7 +44,7 @@ module.exports = function(app) {
     };
 
     service.getToken = function() {
-      return token;
+      return $window.localStorage.token;
     };
 
     return service;

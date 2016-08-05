@@ -13,11 +13,11 @@
   </head>
 
   <body data-ng-app="JobDash">
-
+    <main ng-controller="AuthController as authctrl" ng-init="authctrl.goSignUp()">
       <div class="container" ng-view=""></div>
-
+      <!-- <button ng-controller="AuthController as authctrl" ng-click="authctrl.signOut()">SIGN OUT</button> -->
       <script src="bundle.js"></script>
-        <script src="dnd.js"></script>
-    </body>
+    </main>
+  </body>
 
   </html>

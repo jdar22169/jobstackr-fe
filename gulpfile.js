@@ -3,6 +3,8 @@ const gulp = require('gulp');
 const webpack = require('webpack-stream');
 const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
+const wp = require('webpack');
+const webpackplugin = new wp.DefinePlugin({'process.env':{URI: JSON.stringify(process.env.URI || 'http://localhost:3000/')}});
 
 var paths = {
   dev: {
@@ -45,7 +47,8 @@ gulp.task('bundle', () => {
     .pipe(webpack({
       output: {
         filename: 'bundle.js'
-      }
+      },
+      plugins: [webpackplugin]
     }))
     .pipe(gulp.dest(paths.build.main));
 });
@@ -58,6 +61,13 @@ gulp.task('bundle:test', () => {
     .pipe(webpack({
       output: {
         filename: 'test_bundle.js'
+      },
+      plugins: [webpackplugin],
+      module:{
+        loaders:[{
+          test:/\.html$/,
+          loader:'html'
+        }]
       }
     }))
     .pipe(gulp.dest(paths.build.test));

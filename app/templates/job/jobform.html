@@ -1,7 +1,17 @@
-<form ng-submit="submit(job)">
-  <input type="text" ng-model="job.url" placeholder="url">
+<div class="row addbar">
+  <form ng-submit="submit(job)">
+
+    <div class="one columns">
+      <input type="button" ng-click="formHandler($event)" value="+">
+    </div>
+    <div class="eleven columns">
+      <input class="u-full-width" placeholder="paste job link here" type="text" ng-model="job.url" ng-paste="formHandler($event)">
+    </div>
+  <div ng-show="showform">
+
   <input type="text" ng-model="job.company" placeholder="company">
   <input type="text" ng-model="job.title" placeholder="title">
   <button type="submit">SUBMIT</button>
-  <button ng-show="type === 'edit'" ng-click="deleteJob(job)">Delete</button>
+</div>
 </form>
+</div>

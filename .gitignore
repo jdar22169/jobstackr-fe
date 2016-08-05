@@ -104,3 +104,5 @@ Session.vim
 tags
 
 build
+
+test/test_bundle.js

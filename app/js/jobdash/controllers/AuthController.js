@@ -1,19 +1,25 @@
+'use strict';
 module.exports = function(app){
-  app.controller('AuthController', function($location, AuthService) {
+  app.controller('AuthController', function($location, $window, AuthService) {
+    let token = $window.localStorage.token;
+
     this.goSignIn = function(){
       $location.url('/signin');
     };
     this.goSignUp = function() {
-      $location.url('/signup');
+      if(!token || token === 'null') return $location.url('/signup');
+      $location.url('/');
     };
     this.signUp = function(user){
       AuthService.signUp(user);
-      $location.url('/');
     };
     this.signIn = function(user){
-      console.log('in controller signin', user);
       AuthService.signIn(user);
-      $location.url('/');
+
+    };
+    this.signOut = function(){
+      AuthService.signOut();
+      $location.url('/signin');
     };
   });
 };
