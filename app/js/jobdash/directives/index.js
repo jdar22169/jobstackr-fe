@@ -1,5 +1,5 @@
 module.exports = function(app) {
-  require('./backlog')(app);
+ require('./sidebar')(app);
   require('./jobForm')(app);
   // require('./pane')(app);
   // require('./paneContainer')(app);

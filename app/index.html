@@ -19,8 +19,8 @@
 
   <body data-ng-app="JobDash">
 
-    <main ng-controller="AuthController as authctrl" ng-init="authctrl.goSignUp()">
-      <div ng-view=""></div>
+    <main ng-controller="AuthController as authctrl" ng-init="authctrl.goSignUp()" ng-view="">
+
       <!-- <button ng-controller="AuthController as authctrl" ng-click="authctrl.signOut()">SIGN OUT</button> -->
       <script src="bundle.js"></script>
       <script src="libs/ui-bootstrap-tpls.js"></script>

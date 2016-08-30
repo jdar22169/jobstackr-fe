@@ -3,7 +3,13 @@ module.exports = function (app) {
     return {
       templateUrl: './templates/job/joblist.html',
       scope: {
-        jobs: '='
+        jobs: '=',
+        currentlisttitle: '='
+      },
+      require: '^^ngController',
+      link: function($scope, elem, attr, controller) {
+        $scope.jobClick = controller.jobClick;
+
       }
     };
   });

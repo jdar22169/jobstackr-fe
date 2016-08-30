@@ -1,49 +1,19 @@
-<div ng-cloak="" ng-controller="JobController as jobctrl" ng-init="jobctrl.getActiveJobs()">
+<div class="full" ng-cloak="" ng-controller="JobController as jobctrl" ng-init="jobctrl.getActiveJobs()">
 
 <div class="fixed-nav-bar">
   <job-form link-api-job="jobctrl.linkApiJob"></job-form>
 </div>
   <div class="wrap">
     <div class="sidebar">
-      <ul>
-        <li>Backlog({{jobctrl.backlog.length}})</li>
-        <li>Today({{jobctrl.today.length}})</li>
-        <li>Archived({{jobctrl.applied.length}})</li>
-        <li>Inprogress({{jobctrl.inprocess.length}})</li>
-      </ul>
+<sidebar backlog="jobctrl.backlog" today="jobctrl.today" inprocess="jobctrl.inprocess" applied="jobctrl.applied"> </sidebar>
     </div>
+
 <div class="joblist">
-  <job-list jobs="jobctrl.backlog"></job-list>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed emolumenta communia esse dicuntur, recte autem facta et peccata non habentur communia. Sed erat aequius Triarium aliquid de dissensione nostra iudicare. Inquit, dasne adolescenti veniam? Satisne vobis videor pro meo iure in vestris auribus commentatus? Nobis Heracleotes ille Dionysius flagitiose descivisse videtur a Stoicis propter oculorum dolorem. </p>
-
-<p>Quis est tam dissimile homini. Causa autem fuit huc veniendi ut quosdam hinc libros promerem. Aliter enim explicari, quod quaeritur, non potest. Quamquam non negatis nos intellegere quid sit voluptas, sed quid ille dicat. </p>
-
-<p>Quid enim me prohiberet Epicureum esse, si probarem, quae ille diceret? Qui enim existimabit posse se miserum esse beatus non erit. Odium autem et invidiam facile vitabis. Sed ea mala virtuti magnitudine obruebantur. Inde sermone vario sex illa a Dipylo stadia confecimus. Quae contraria sunt his, malane? Cum ageremus, inquit, vitae beatum et eundem supremum diem, scribebamus haec. Ergo instituto veterum, quo etiam Stoici utuntur, hinc capiamus exordium. Quamquam tu hanc copiosiorem etiam soles dicere. </p>
-
-<p>Negat esse eam, inquit, propter se expetendam. Quantum Aristoxeni ingenium consumptum videmus in musicis? Quorum sine causa fieri nihil putandum est. Si verbum sequimur, primum longius verbum praepositum quam bonum. Quam nemo umquam voluptatem appellavit, appellat; Conferam tecum, quam cuique verso rem subicias; Simus igitur contenti his. Sed tu istuc dixti bene Latine, parum plane. </p>
-
-<p>Duo Reges: constructio interrete. Illi enim inter se dissentiunt. Gloriosa ostentatio in constituendo summo bono. Sed nimis multa. Pollicetur certe. Tollitur beneficium, tollitur gratia, quae sunt vincla concordiae. </p>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed emolumenta communia esse dicuntur, recte autem facta et peccata non habentur communia. Sed erat aequius Triarium aliquid de dissensione nostra iudicare. Inquit, dasne adolescenti veniam? Satisne vobis videor pro meo iure in vestris auribus commentatus? Nobis Heracleotes ille Dionysius flagitiose descivisse videtur a Stoicis propter oculorum dolorem. </p>
-
-<p>Quis est tam dissimile homini. Causa autem fuit huc veniendi ut quosdam hinc libros promerem. Aliter enim explicari, quod quaeritur, non potest. Quamquam non negatis nos intellegere quid sit voluptas, sed quid ille dicat. </p>
-
-<p>Quid enim me prohiberet Epicureum esse, si probarem, quae ille diceret? Qui enim existimabit posse se miserum esse beatus non erit. Odium autem et invidiam facile vitabis. Sed ea mala virtuti magnitudine obruebantur. Inde sermone vario sex illa a Dipylo stadia confecimus. Quae contraria sunt his, malane? Cum ageremus, inquit, vitae beatum et eundem supremum diem, scribebamus haec. Ergo instituto veterum, quo etiam Stoici utuntur, hinc capiamus exordium. Quamquam tu hanc copiosiorem etiam soles dicere. </p>
-
-<p>Negat esse eam, inquit, propter se expetendam. Quantum Aristoxeni ingenium consumptum videmus in musicis? Quorum sine causa fieri nihil putandum est. Si verbum sequimur, primum longius verbum praepositum quam bonum. Quam nemo umquam voluptatem appellavit, appellat; Conferam tecum, quam cuique verso rem subicias; Simus igitur contenti his. Sed tu istuc dixti bene Latine, parum plane. </p>
-
-<p>Duo Reges: constructio interrete. Illi enim inter se dissentiunt. Gloriosa ostentatio in constituendo summo bono. Sed nimis multa. Pollicetur certe. Tollitur beneficium, tollitur gratia, quae sunt vincla concordiae. </p>
-
+  <job-list jobs="jobctrl.currentList" currentlisttitle="jobctrl.currentListTitle"></job-list>
 </div>
 
 <div class="jobdesc">
-test<br />
-test<br />
-test<br />
-test<br />
-test<br />
-test<br />
-test<br />
+  <job-card job="jobctrl.jobCard.job"></job-card>
 </div>
 </div>
 </div>
