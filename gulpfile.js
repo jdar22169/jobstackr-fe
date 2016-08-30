@@ -17,17 +17,22 @@ var paths = {
     css: 'app/css/**/*.css',
     html: 'app/**/*.html',
     js: 'app/js/**/*.js',
-    test: 'test/*_test.js'
+    test: 'test/*_test.js',
+    libs: 'libs/*',
+    data: 'app/data/*.json'
   },
   build: {
     main: 'build/',
     css: 'build/css',
     js: 'build/js',
+    libs: 'build/libs',
+    data: 'build/data',
     test: 'test/'
   },
   production: {
     main: 'public/',
     css: 'build/css',
+    data: 'build/data',
     js: 'build/js'
   }
 };
@@ -37,15 +42,36 @@ gulp.task('watch', function () {
   gulp.watch(paths.dev.js, ['bundle']);
   gulp.watch(paths.dev.css, ['staticcssfiles:dev']);
   gulp.watch(paths.dev.test, ['bundle:test']);
+  gulp.watch(paths.dev.libs, ['libfiles:dev']);
+
 });
 
-gulp.task('statichtmlfiles:dev', () => {
-  return gulp.src(paths.dev.html)
-    .pipe(gulp.dest(paths.build.main));
-});
+
 
 gulp.task('staticcssfiles:dev', () => {
   return gulp.src(paths.dev.css)
+    .pipe(gulp.dest(paths.build.main));
+});
+
+gulp.task('staticcssfiles:production', () => {
+  return gulp.src(paths.dev.css)
+    .pipe(gulp.dest(paths.production.main));
+});
+
+
+gulp.task('libfiles:dev', () => {
+  return gulp.src(paths.dev.libs)
+    .pipe(gulp.dest(paths.build.libs));
+});
+
+gulp.task('libfiles:production', () => {
+  return gulp.src(paths.dev.libs)
+    .pipe(gulp.dest(paths.production.libs));
+});
+
+
+gulp.task('statichtmlfiles:dev', () => {
+  return gulp.src(paths.dev.html)
     .pipe(gulp.dest(paths.build.main));
 });
 
@@ -54,10 +80,18 @@ gulp.task('statichtmlfiles:production', () => {
     .pipe(gulp.dest(paths.production.main));
 });
 
-gulp.task('staticcssfiles:production', () => {
-  return gulp.src(paths.dev.css)
-    .pipe(gulp.dest(paths.production.main));
+
+gulp.task('staticdata:dev', () => {
+  return gulp.src(paths.dev.data)
+    .pipe(gulp.dest(paths.build.data));
 });
+
+// gulp.task('staticdata:production', () => {
+//   return gulp.src(paths.dev.data)
+//     .pipe(gulp.dest(paths.production.data));
+// });
+
+
 
 gulp.task('bundle', () => {
   var webpackplugin = new wp.DefinePlugin({
@@ -77,7 +111,6 @@ gulp.task('bundle', () => {
     })).pipe(babel({
       presets: ['es2015']
     }))
-    .pipe(gulp.dest('dist'))
     .pipe(gulp.dest(paths.build.main));
 });
 
@@ -127,5 +160,5 @@ gulp.task('bundle:test', () => {
     .pipe(gulp.dest(paths.build.test));
 });
 
-gulp.task('default', ['bundle', 'statichtmlfiles:dev', 'staticcssfiles:dev']);
-gulp.task('build:production', ['bundle:production', 'statichtmlfiles:production', 'staticcssfiles:production']);
+gulp.task('default', ['bundle', 'statichtmlfiles:dev', 'staticcssfiles:dev', 'staticdata:dev', 'libfiles:dev']);
+gulp.task('build:production', ['bundle:production', 'statichtmlfiles:production', 'staticcssfiles:production', 'staticdata:production' ,'libfiles:production']);

@@ -18,10 +18,9 @@ module.exports = function (app) {
 
     //move a job from one list to another
     this.move = function (oldlist, newlist, job) {
-      console.log("movving");
       let index = this[oldlist].indexOf(job);
       this[oldlist].splice(index, 1);
-      this[newlist].push(job)
+      this[newlist].push(job);
     };
 
     this.getLink = function (link) {
@@ -77,6 +76,7 @@ module.exports = function (app) {
     };
 
     this.addJobs = function (job) {
+      job.statusValue = 0;
       $http({
         method: 'POST',
         data: job,
@@ -104,8 +104,8 @@ module.exports = function (app) {
         .then((res) => {
           if (!this.jobCard.job.events) this.jobCard.job.events = [];
           this.jobCard.job.events.push(res.data);
-          if (this.jobCard.job.events.length == 1) var newlist = "applied";
-          if (this.jobCard.job.events.length > 1) var newlist = "inprocess";
+          if (this.jobCard.job.events.length == 1) var newlist = 'applied';
+          if (this.jobCard.job.events.length > 1) var newlist = 'inprocess';
           console.log('newlist', newlist);
           console.log('oldlist', this.jobCard.job);
           this.move(this.jobCard.job.list, newlist, this.jobCard.job);
