@@ -1,0 +1,33 @@
+.joblist {
+  overflow-y: scroll;
+  /*width: 20%;
+  /*overflow-y: scroll;
+  float: left;*/
+  padding-right: 10px;
+}
+
+.joblist li {
+  list-style-type: none;
+  border-bottom: #C4C4C4 solid 1px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.joblist li:hover {
+  background-color: #EDEDED;
+}
+
+.joblist ul {
+  padding-left: 5px;
+}
+
+.joblist h4 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.joblist h5 {
+  margin-top: 8px;
+  margin-bottom: 0px;
+  color: #C4C4C4;
+  font-weight: lighter;
+}

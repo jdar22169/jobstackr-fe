@@ -1,0 +1,27 @@
+.navupper {
+  background-color: #00a087;
+  height: 50px;
+}
+
+.navlower {
+  height: 50px;
+  background-color: #565E61;
+}
+
+
+.fixed-nav-bar {
+  flex-direction: column;
+  width: 100vw;
+}
+
+
+.jobinput {
+  margin-top: 10px;
+  width: 32%;
+  float: left;
+  margin-left: 2px;
+}
+
+.jobinput.first {
+  padding-left: 20px;
+}

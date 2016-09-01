@@ -5,7 +5,8 @@ const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 const wp = require('webpack');
 const babel = require('gulp-babel');
-
+const sass = require('gulp-sass');
+const concat = require('gulp-concat');
 
 var settings = {
   productionApiUri: 'https://powerful-hollows-96528.herokuapp.com/',
@@ -14,7 +15,7 @@ var settings = {
 
 var paths = {
   dev: {
-    css: 'app/css/**/*.css',
+    css: 'app/css/**/*.scss',
     html: 'app/**/*.html',
     js: 'app/js/**/*.js',
     test: 'test/*_test.js',
@@ -46,18 +47,18 @@ gulp.task('watch', function () {
 
 });
 
-
-
 gulp.task('staticcssfiles:dev', () => {
-  return gulp.src(paths.dev.css)
+  gulp.src(paths.dev.css)
+    .pipe(sass().on('error', sass.logError))
+    .pipe(concat('style.css'))
     .pipe(gulp.dest(paths.build.main));
 });
 
 gulp.task('staticcssfiles:production', () => {
-  return gulp.src(paths.dev.css)
+  gulp.src(paths.dev.css)
+    .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(paths.production.main));
 });
-
 
 gulp.task('libfiles:dev', () => {
   return gulp.src(paths.dev.libs)
@@ -69,7 +70,6 @@ gulp.task('libfiles:production', () => {
     .pipe(gulp.dest(paths.production.libs));
 });
 
-
 gulp.task('statichtmlfiles:dev', () => {
   return gulp.src(paths.dev.html)
     .pipe(gulp.dest(paths.build.main));
@@ -80,7 +80,6 @@ gulp.task('statichtmlfiles:production', () => {
     .pipe(gulp.dest(paths.production.main));
 });
 
-
 gulp.task('staticdata:dev', () => {
   return gulp.src(paths.dev.data)
     .pipe(gulp.dest(paths.build.data));
@@ -90,8 +89,6 @@ gulp.task('staticdata:dev', () => {
 //   return gulp.src(paths.dev.data)
 //     .pipe(gulp.dest(paths.production.data));
 // });
-
-
 
 gulp.task('bundle', () => {
   var webpackplugin = new wp.DefinePlugin({
@@ -108,9 +105,10 @@ gulp.task('bundle', () => {
         filename: 'bundle.js'
       },
       plugins: [webpackplugin]
-    })).pipe(babel({
-      presets: ['es2015']
     }))
+    // .pipe(babel({
+    //   presets: ['es2015']
+    // }))
     .pipe(gulp.dest(paths.build.main));
 });
 
@@ -129,7 +127,8 @@ gulp.task('bundle:production', () => {
         filename: 'bundle.js'
       },
       plugins: [webpackplugin]
-    })).pipe(babel({
+    }))
+    .pipe(babel({
       presets: ['es2015']
     }))
     .pipe(gulp.dest(paths.production.main));
@@ -161,4 +160,4 @@ gulp.task('bundle:test', () => {
 });
 
 gulp.task('default', ['bundle', 'statichtmlfiles:dev', 'staticcssfiles:dev', 'staticdata:dev', 'libfiles:dev']);
-gulp.task('build:production', ['bundle:production', 'statichtmlfiles:production', 'staticcssfiles:production', 'staticdata:production' ,'libfiles:production']);
+gulp.task('build:production', ['bundle:production', 'statichtmlfiles:production', 'staticcssfiles:production', 'staticdata:production', 'libfiles:production']);

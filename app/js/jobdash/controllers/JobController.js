@@ -15,6 +15,7 @@ module.exports = function (app) {
     this.linkApiJob = {};
     //this.joblist = [];
     this.currentListTitle = "Backlog"
+    this.tweaker = {}
 
 
 
