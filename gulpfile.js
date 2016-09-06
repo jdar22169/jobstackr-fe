@@ -160,4 +160,4 @@ gulp.task('bundle:test', () => {
 });
 
 gulp.task('default', ['bundle', 'statichtmlfiles:dev', 'staticcssfiles:dev', 'staticdata:dev', 'libfiles:dev']);
-gulp.task('build:production', ['bundle:production', 'statichtmlfiles:production', 'staticcssfiles:production', 'staticdata:production', 'libfiles:production']);
+gulp.task('build:production', ['bundle:production', 'statichtmlfiles:production', 'staticcssfiles:production', 'libfiles:production']);

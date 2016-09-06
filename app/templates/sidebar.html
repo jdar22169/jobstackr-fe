@@ -1,8 +1,7 @@
 <h5>Job Pipeline</h5>
   <ul>
-    <li ng-class="{'active': active == 1 }" ng-click="listClick(backlog, 'Backlog',1)">Backlog ({{backlog.length}})</li>
-    <li ng-class="{'active': active == 2 }" ng-click="listClick(today, 'Today',2)">Today ({{today.length}})</li>
-    <li ng-class="{'active': active == 3 }" ng-click="listClick(applied, 'Applied',3)">Applied ({{applied.length}})</li>
-    <li ng-class="{'active': active == 4 }" ng-click="listClick(inprocess,'In Progress',4)">Inprogress ({{inprocess.length}})</li>
+    <li ng-class="{'active': active == 1 }" ng-click="listClick(backlog, 'Backlog',1)"><span class="titip-right">Backlog ({{backlog.length}}) <tooltip ng-if="tweakerstyle.tooltips" class="titip-content" message="backlog"></tooltip></span></li>
+    <li ng-class="{'active': active == 2 }" ng-click="listClick(applied, 'Applied',2)"><span class="titip-right">Applied ({{applied.length}}) <tooltip ng-if="tweakerstyle.tooltips"class="titip-content" message="backlog"></tooltip></span></li>
+    <li ng-class="{'active': active == 3 }" ng-click="listClick(inprocess,'In Progress',3)"><span class="titip-right">In Progress ({{inprocess.length}}) <tooltip ng-if="tweakerstyle.tooltips" class="titip-content" message="backlog"></tooltip></span></li>
   </ul>
 <hr />
