@@ -18,6 +18,7 @@ module.exports = function (app) {
     };
 
     service.getBackLog = function (jobs) {
+      console.log("getting sorted", jobs);
       return jobs.filter(function (j) {
         return (j.isToday != true && j.statusValue == 0 );
       });

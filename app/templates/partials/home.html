@@ -1,34 +1,31 @@
 <div ng-cloak="" ng-controller="JobController as jobctrl" ng-init="jobctrl.getActiveJobs()">
+  <!-- <div class="fixed-nav-bar" tweaker="">
+    <div class="navupper"><h1>Job Dash</h1></div>
+    <div class="navlower">
+    </div>
+  </div> -->
+
+  <div class="full" tweaker="">
+    <div class="layout__body">
 
 
-  <div class="row">
+
+  <div class="sidebar layout__nav layout__columns" >
+    <div class=sideheader><h4>Dash Jobs</h4>  </div>
+    <sidebar backlog="jobctrl.backlog" today="jobctrl.today" inprocess="jobctrl.inprocess" applied="jobctrl.applied"></sidebar>
     <job-form link-api-job="jobctrl.linkApiJob"></job-form>
+
   </div>
 
 
-  <div class="row">
-      <pane-container backlog="jobctrl.backlog" today="jobctrl.today" inprocess="jobctrl.inprocess" applied="jobctrl.applied"></pane-container>
-    </div>
-
-    <div ng-show="jobctrl.showbacklog" class="row">
-      <div class="twelve columns">
-        <backlog-view backlog="jobctrl.backlog" today="jobctrl.today"  backlogshow="jobctrl.backlogshow" listtitle="{{jobctrl.listtitle}}"></backlog-view>
-      </div>
-    </div>
-
-
-      <div ng-show="jobctrl.showjobevents" class="row">
-        <div class="six columns">
-          <backlog-view backlog="jobctrl.backlog" today="jobctrl.joblist"  listtitle="{{jobctrl.listtitle}}" backlogshow="jobctrl.backlogshow"></backlog-view>
-        </div>
-
-<div class="six columns">
-        <job-card job="jobctrl.jobCard.job">
-        </job-card>
-      </div>
-
-
-    </div>
+  <div class="jobdesc layout__content" ng-style="jobctrl.tweaker.panelstyle">
+    <job-card job="jobctrl.jobCard.job" tweakerstyle="jobctrl.tweaker"></job-card>
   </div>
-  <button class="signout" ng-controller="AuthController as authctrl" ng-click="authctrl.signOut()">SIGN OUT</button>
-  <script src="bundle.js"></script>
+
+  <div class="joblist layout__nav layout__columns" ng-style="jobctrl.tweaker.panelstyle">
+    <job-list jobs="jobctrl.currentList" currentlisttitle="jobctrl.currentListTitle"></job-list>
+  </div>
+
+    </div>
+</div>
+</div>

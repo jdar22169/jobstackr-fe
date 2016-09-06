@@ -8,20 +8,22 @@ module.exports = function (app) {
     this.backlog = []; //from active and value > 0
     this.inprocess = []; //from active and value > 2
     this.applied = []; //from active and value = 1
-    this.showjobevents = false;
-    this.showbacklog = true;
+    //this.showjobevents = false;
+    //this.showbacklog = true;
     this.jobCard = {};
-    this.mode = 'list';
+  //  this.mode = 'list';
     this.linkApiJob = {};
-    this.joblist = [];
+    //this.joblist = [];
+    this.currentListTitle = "Backlog"
+    this.tweaker = {}
+
 
 
     //move a job from one list to another
     this.move = function (oldlist, newlist, job) {
-      console.log("movving");
       let index = this[oldlist].indexOf(job);
       this[oldlist].splice(index, 1);
-      this[newlist].push(job)
+      this[newlist].push(job);
     };
 
     this.getLink = function (link) {
@@ -55,6 +57,8 @@ module.exports = function (app) {
           this.backlog = sortJobs.getBackLog(this.jobs);
           this.applied = sortJobs.applied(this.jobs);
           this.inprocess = sortJobs.inprocess(this.jobs);
+          this.currentList = this.backlog;
+          this.currentListTitle = "Backlog"
         })
         .then(() => {
           $http({
@@ -77,6 +81,7 @@ module.exports = function (app) {
     };
 
     this.addJobs = function (job) {
+      job.statusValue = 0;
       $http({
         method: 'POST',
         data: job,
@@ -104,8 +109,8 @@ module.exports = function (app) {
         .then((res) => {
           if (!this.jobCard.job.events) this.jobCard.job.events = [];
           this.jobCard.job.events.push(res.data);
-          if (this.jobCard.job.events.length == 1) var newlist = "applied";
-          if (this.jobCard.job.events.length > 1) var newlist = "inprocess";
+          if (this.jobCard.job.events.length == 1) var newlist = 'applied';
+          if (this.jobCard.job.events.length > 1) var newlist = 'inprocess';
           console.log('newlist', newlist);
           console.log('oldlist', this.jobCard.job);
           this.move(this.jobCard.job.list, newlist, this.jobCard.job);
@@ -151,7 +156,7 @@ module.exports = function (app) {
 
     this.jobClick = function(job){
       this.jobCard.job = job;
-      this.mode = 'single';
     }.bind(this);
+
   });
 };

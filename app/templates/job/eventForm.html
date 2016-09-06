@@ -1,6 +1,7 @@
 <form ng-submit="addEvent(event)">
- <textarea class="u-full-width" rows="2" type="text" ng-model="event.note" placeholder="description"></textarea>
-<select ng-options="item as item.label for item in items track by item.id" ng-model="selected"></select>
+  <select class="form-control" ng-options="item as item.label for item in items track by item.id" ng-model="selected"></select>
 
-  <button type="submit">SUBMIT</button>
+ <textarea class="u-full-width form-control" rows="2" type="text" ng-model="event.note" placeholder="description"></textarea>
+
+  <button class="form-control btn btn-primary" type="submit">ADD EVENT</button>
 </form>

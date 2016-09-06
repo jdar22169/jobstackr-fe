@@ -1,23 +1,25 @@
-<div id="jobcard" class="events card roundedcorners">
+<div id="jobcard">
     <div class="jobinfo">
-    <h3>{{job.company}}</h3>
-    <h4><a href="{{job.url}}">{{job.title}}</a></h4>
+    <h2>{{job.company}}</h2>
+    <h3><a href="{{job.url}}">{{job.title}}</a></h3>
   </div>
   <div class="eventlist">
 
-        <p> Events </p>
-        <ul>
+    <div id="eventpane" ng-style="tweakerstyle.eventpane" >
+      <div class="event" ng-repeat="event in job.events">
+        <span class="glyphicon" ng-class="globals.eventTypes[event.typeId].icon" aria-hidden="true"></span>
+        <div class="eventtitle">{{globals.eventTypes[event.typeId].label}}</div>
+        <p>{{event.note}}</p>
+      </div>
 
-        <li ng-repeat="event in job.events">
-          <event-icon eventtypeid="event.typeId"></event-icon>
-          <!-- <span class="glyphicon {{job.event.type}}" aria-hidden="true"></span> -->
-          {{event.note}}
-        </li>
-      </ul>
+    </div>
+
+
+
+
     </div>
       <div class="eventform">
         <event-form job="job"></event-form>
-
       </div>
 
 </div>

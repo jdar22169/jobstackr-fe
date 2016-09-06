@@ -1,5 +1,5 @@
 module.exports = function (app) {
-  app.directive('jobForm', function () {
+  app.directive('jobForm', function ($uibModal) {
     return {
       templateUrl: './templates/job/job_form.html',
       scope: {
@@ -7,6 +7,7 @@ module.exports = function (app) {
       },
       require: '^^ngController',
       link: function ($scope, elem, attr, controller) {
+
         $scope.formHandler = function (event) {
           if(event.clipboardData){
             controller.getLink({
