@@ -5,6 +5,8 @@ module.exports = function(app) {
     const service = {};
 
     service.signUp = function(user) {
+      user.tooltips = true;
+      $window.localStorage.tooltips
       return $http.post(url + 'signup', user)
         .then((res) => {
           token = res.data.token;
@@ -31,6 +33,7 @@ module.exports = function(app) {
         console.log('in service signin then');
         token = res.data.token;
         $window.localStorage.token = token;
+        $window.localStorage.tooltips = res.data.tooltips;
         $location.url('/');
         return res;
       }, (err) => {

@@ -54,6 +54,14 @@ main {
 
 .jobdesc {
 border-left: 1px solid #C4C4C4;
+position: relative;
+
+}
+
+job-card {
+  position: absolute;
+  top: 0;
+  width: 100%
 }
 
 
@@ -157,4 +165,15 @@ padding-right: 21px;
 .sidebar li {
   list-style-type: none;
   padding-bottom: 10px;
+}
+
+
+.loadingoverlay {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  opacity: .4
 }

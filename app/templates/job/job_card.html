@@ -1,4 +1,9 @@
+
 <div id="jobcard">
+  <div ng-if="tweakerstyle.jobCardLoading" class="loading">Loading&#8230;</div>
+  <div ng-if="tweakerstyle.jobCardLoading" class="loadingbg"></div>
+
+
     <div class="jobinfo">
     <h2>{{job.company}}</h2>
     <h3><a href="{{job.url}}">{{job.title}}</a></h3>
