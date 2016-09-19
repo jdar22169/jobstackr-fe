@@ -18,9 +18,11 @@
         <hr />
         <h5>Settings</h5>
 
-        <a ng-click="jobctrl.toggleToolTips()">Turn Tooltips {{jobctrl.tweaker.tooltips ? "Off" : "On"}}</a>
+        <a ng-click="jobctrl.toggleToolTips()">Turn Tooltips {{jobctrl.tweaker.tooltips ? "Off" : "On"}}</a><br/><br/>
+        <button class="signOut" ng-controller="AuthController as authctrl" ng-click="authctrl.signOut()">SIGN OUT</button>
 
       </div>
+
 
       <div class="jobdesc layout__content" ng-style="jobctrl.tweaker.panelstyle">
         <job-card job="jobctrl.jobCard.job" tweakerstyle="jobctrl.tweaker"></job-card>
