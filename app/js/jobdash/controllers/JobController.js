@@ -17,6 +17,7 @@ module.exports = function (app) {
     this.currentListTitle = "Backlog"
     this.tweaker = {}
     this.tweaker.tooltips = $window.localStorage.tooltips
+    console.log("local",$window.localStorage.tooltips);
 
     //move a job from one list to another
     this.move = function (oldlist, newlist, job) {
@@ -165,6 +166,7 @@ module.exports = function (app) {
       console.log("here");
       this.tweaker.tooltips = !this.tweaker.tooltips
       $window.localStorage.tooltips = this.tweaker.tooltips;
+      console.log("toggle",$window.localStorage.tooltips);
     };
 
   });
