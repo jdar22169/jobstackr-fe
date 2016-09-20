@@ -3,12 +3,12 @@ module.exports = function (app) {
     let service = {};
 
     service.eventTypes = [{
-      id: 1,
+      id: 0,
       label: 'Application Submitted',
       value: 1,
       icon: 'glyphicon glyphicon-send'
     }, {
-      id: 2,
+      id: 1,
       label: 'Phone Screen',
       value: 2,
       icon: 'glyphicon glyphicon-phone-alt'
@@ -28,7 +28,7 @@ module.exports = function (app) {
       value: 2,
       icon: 'glyphicon glyphicon-user'
     }, {
-      id: 4,
+      id: 5,
       label: 'Offer',
       value: 3,
       icon: 'glyphicon glyphicon-usd'
