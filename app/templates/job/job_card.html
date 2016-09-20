@@ -11,7 +11,7 @@
   <div class="eventlist">
 
     <div id="eventpane" ng-style="tweakerstyle.eventpane" >
-      <div class="event" ng-repeat="event in job.events">
+      <div class="event" ng-repeat="event in job.events | orderBy: '-date'">
         <span class="glyphicon" ng-class="globals.eventTypes[event.typeId].icon" aria-hidden="true"></span>
         <div class="eventtitle">{{globals.eventTypes[event.typeId].label}}</div>
         <p>{{event.note}}</p>
