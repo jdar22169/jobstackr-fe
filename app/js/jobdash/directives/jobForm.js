@@ -3,7 +3,8 @@ module.exports = function (app) {
     return {
       templateUrl: './templates/job/job_form.html',
       scope: {
-        linkApiJob: '='
+        linkApiJob: '=',
+        tweakerstyle: '='
       },
       require: '^^ngController',
       link: function ($scope, elem, attr, controller) {
@@ -26,10 +27,16 @@ module.exports = function (app) {
         $scope.deleteJob = controller.deleteJob;
 
         $scope.submit = function (job) {
-          console.log(job);
+          if(!job.title || !job.company) {
+            $scope.tweakerstyle.jobFormError = true
+          } else {
           controller.addJobs(job);
           $scope.job = {};
           $scope.showform = false;
+          $scope.tweakerstyle.jobFormError = false
+          controller.currentList = controller.backlog
+          controller.currentListTitle = "Backlog"
+        }
         };
       }
 

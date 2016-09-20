@@ -1,8 +1,7 @@
 
-<div id="jobcard">
+<div ng-if="job" id="jobcard">
   <div ng-if="tweakerstyle.jobCardLoading" class="loading">Loading&#8230;</div>
   <div ng-if="tweakerstyle.jobCardLoading" class="loadingbg"></div>
-
 
     <div class="jobinfo">
     <h2>{{job.company}}</h2>
@@ -14,13 +13,11 @@
       <div class="event" ng-repeat="event in job.events">
         <span class="glyphicon" ng-class="globals.eventTypes[event.typeId].icon" aria-hidden="true"></span>
         <div class="eventtitle">{{globals.eventTypes[event.typeId].label}}</div>
+        {{event.typeId}}
         <p>{{event.note}}</p>
       </div>
 
     </div>
-
-
-
 
     </div>
       <div class="eventform">
