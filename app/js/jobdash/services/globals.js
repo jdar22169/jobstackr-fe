@@ -13,22 +13,22 @@ module.exports = function (app) {
       value: 2,
       icon: 'glyphicon glyphicon-phone-alt'
     }, {
-      id: 3,
+      id: 2,
       label: 'Email',
       value: 2,
       icon: 'glyphicon glyphicon-envelope'
     }, {
-      id: 4,
+      id: 3,
       label: 'Phone Interview',
       value: 2,
       icon: 'glyphicon glyphicon-phone-alt'
     }, {
-      id: 5,
+      id: 4,
       label: 'In Person Interview',
       value: 2,
       icon: 'glyphicon glyphicon-user'
     }, {
-      id: 6,
+      id: 5,
       label: 'Offer',
       value: 3,
       icon: 'glyphicon glyphicon-usd'
