@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html data-ng-app="JobDash">
 
   <head>
     <meta charset="utf-8">
@@ -7,19 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Job Desh</title>
     <link rel="stylesheet" href="/libs/normalize.css">
-    <!-- <link rel="stylesheet" href="skeleton.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/furtive/2.2.4/furtive.css"> -->
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <!-- Light package of effect.css It is optional if you want to use css3 animation effects -->
-       <link rel="stylesheet" href="libs/effect-light.min.css">
-       <!-- Latest compiled and minified CSS on head of your page -->
-       <link rel="stylesheet" href="libs/titip.min.css">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/style.css">
+    <!-- Light package of effect.css It is optional if you want to use css3 animation effects -->
+    <link rel="stylesheet" href="libs/effect-light.min.css">
+    <!-- Latest compiled and minified CSS on head of your page -->
+    <link rel="stylesheet" href="libs/titip.min.css">
 
   </head>
 
-  <body data-ng-app="JobDash">
+  <body >
 
     <main class="wrap" ng-controller="AuthController as authctrl" ng-init="authctrl.goSignUp()" ng-view="">
 
@@ -29,11 +27,8 @@
       <script src="libs/ui-bootstrap.js"></script>
       <!-- <script src="libs/angular-modal-service.min.js"></script> -->
 
-
-
-
     </main>
 
   </body>
 
-  </html>
+</html>
