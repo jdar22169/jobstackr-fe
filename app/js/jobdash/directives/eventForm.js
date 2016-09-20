@@ -12,6 +12,7 @@ module.exports = function (app) {
           event.jobId = $scope.job._id;
           event.typeId = $scope.selected.id;
           event.value = $scope.selected.value;
+          event.date = new Date().getTime();
           controller.addEvent(event, $scope.job);
         };
       },
