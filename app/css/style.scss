@@ -1,5 +1,6 @@
 
 $primary-white: white;
+$primary-color: #00a087;
 
 body{
 height: 100vh;
@@ -33,6 +34,11 @@ main {
 }
 
 .layout__columns.joblist {
+  flex: 0 0 24em;
+}
+
+
+.layout__columns.welcome {
   flex: 0 0 24em;
 }
 
@@ -155,7 +161,7 @@ padding-right: 21px;
 }
 
 .sidebar li.active {
-  color:red;
+  color:#00a087;
 }
 
 .sidebar ul {

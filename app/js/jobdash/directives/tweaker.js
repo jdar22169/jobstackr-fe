@@ -8,13 +8,13 @@ module.exports = function(app){
       link: function(scope, elem, attr, controller){
         controller.tweaker.panelstyle = { 'height': $window.innerHeight - 0 + 'px'}
         controller.tweaker.eventpane =  { 'height': $window.innerHeight - 303 + 'px'}
+        controller.tweaker.sidebar = { 'height': $window.innerHeight + 'px'}
 
 
         angular.element($window).bind('resize', function () {
-
-
             controller.tweaker.panelstyle = { 'height': $window.innerHeight - 0 + 'px'}
             controller.tweaker.eventpane =  { 'height': $window.innerHeight - 303 + 'px'}
+            controller.tweaker.sidebar = { 'height': $window.innerHeight + 'px'}
 
             // manuall $digest required as resize event
             // is outside of angular

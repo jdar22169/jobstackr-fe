@@ -3,13 +3,13 @@
 
   <form ng-submit="submit(job)">
     <input class="form-control" placeholder="paste job link here" type="text" ng-model="job.url" ng-paste="formHandler($event)">
-
-      <!-- <input type="button" ng-click="formHandler($event)" value="+">
-</div>-->
   <div ng-show="showform">
     <input class="form-control" type="text" ng-model="job.company" placeholder="company">
     <input class="form-control" type="text" ng-model="job.title" placeholder="title">
    <button class="form-control btn btn-primary" type="submit">SUBMIT</button>
+   <div ng-if="tweakerstyle.jobFormError" class="error">
+     Your job must have a <B>title</B> and a <b>company</b> before saving
+   </div>
 </div>
 
 </form>
