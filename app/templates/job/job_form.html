@@ -2,11 +2,25 @@
 <div class="jobform">
 
   <form ng-submit="submit(job)">
+     <div class="input-group">
     <input class="form-control" placeholder="paste job link here" type="text" ng-model="job.url" ng-paste="formHandler($event)">
+    <span class="input-group-btn">
+        <button class="btn btn-secondary" ng-click="showform = !showform" type="button">+</button>
+      </span>
+    </div>
   <div ng-show="showform">
     <input class="form-control" type="text" ng-model="job.company" placeholder="company">
     <input class="form-control" type="text" ng-model="job.title" placeholder="title">
-   <button class="form-control btn btn-primary" type="submit">SUBMIT</button>
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default">Applied</button>
+  </div>
+
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default">Apply Later</button>
+  </div>
+</div>
+   <button class="form-control btn btn-primary" type="submit">Save</button>
    <div ng-if="tweakerstyle.jobFormError" class="error">
      Your job must have a <B>title</B> and a <b>company</b> before saving
    </div>

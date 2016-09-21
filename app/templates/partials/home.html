@@ -13,11 +13,12 @@
           <h4>Job Stackr</h4>
           <p>Keep your job search organized</p>
         </div>
-        <sidebar tweakerstyle="jobctrl.tweaker" backlog="jobctrl.backlog" today="jobctrl.today" inprocess="jobctrl.inprocess" applied="jobctrl.applied"></sidebar>
         <job-form tweakerstyle="jobctrl.tweaker" link-api-job="jobctrl.linkApiJob"></job-form>
-        <hr />
+  <hr />
+        <sidebar tweakerstyle="jobctrl.tweaker" backlog="jobctrl.backlog" today="jobctrl.today" inprocess="jobctrl.inprocess" applied="jobctrl.applied"></sidebar>
+
         <h5>Settings</h5>
-        
+
 
         <a ng-click="jobctrl.toggleToolTips()">Turn Tooltips {{jobctrl.tweaker.tooltips ? "Off" : "On"}}</a><br/><br/>
         <button class="form-control btn btn-primary" ng-controller="AuthController as authctrl" ng-click="authctrl.signOut()">SIGN OUT</button>

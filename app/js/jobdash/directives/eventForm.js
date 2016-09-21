@@ -9,9 +9,10 @@ module.exports = function (app) {
       require: '^^ngController',
       link: function ($scope, elem, attr, controller) {
         $scope.addEvent = function (event) {
+          console.log("event", event);
           event.jobId = $scope.job._id;
-          event.typeId = $scope.selected.id;
-          event.value = $scope.selected.value;
+          event.typeId = event.selected.id;
+          event.value = event.selected.value;
           event.date = new Date().getTime();
           controller.addEvent(event, $scope.job);
         };
