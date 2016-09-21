@@ -1,5 +1,5 @@
 <form ng-submit="addEvent(event)">
-  <select class="form-control" ng-options="item as item.label for item in items track by item.id" ng-model="selected"></select>
+  <select class="form-control" ng-options="item as item.label for item in items track by item.id" ng-model="event.selected"></select>
 
  <textarea class="u-full-width form-control" rows="2" type="text" ng-model="event.note" placeholder="description"></textarea>
 

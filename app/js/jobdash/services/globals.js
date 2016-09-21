@@ -32,6 +32,12 @@ module.exports = function (app) {
       label: 'Offer',
       value: 3,
       icon: 'glyphicon glyphicon-usd'
+    },
+    {
+      id: 6,
+      label: 'Cold Email / Reach Out',
+      value: 1,
+      icon: 'glyphicon glyphicon-hand-right'
     }];
 
     service.returnEventbyID = function (id) {
