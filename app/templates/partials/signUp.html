@@ -24,13 +24,15 @@
 
 <div class="col-md-4">
   <h2>Sign up</h2>
-     <form ng-submit="authctrl.signUp(authctrl.newUser)">
-       <input class="form-control" type="text" ng-model="authctrl.newUser.username" placeholder="username"></br>
-       <input class="form-control" type="password" ng-model="authctrl.newUser.password" placeholder="password"></br>
+     <form name="signUp" ng-submit="authctrl.signUp(authctrl.newUser)">
+       <input name="input" class="form-control" type="text" ng-model="authctrl.newUser.username" placeholder="username"></br>
+       <input name="input" class="form-control" type="password" ng-model="authctrl.newUser.password" placeholder="password"></br>
        <button class="form-control" type="submit">SIGN UP</button>
      </form>
-
+     <br />
+      <li ng-repeat="error in authctrl.errors">{{error}}</li>
    </div>
+
  </div>
 
 </div>

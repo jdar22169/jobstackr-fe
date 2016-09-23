@@ -22,6 +22,7 @@
 
 <div class="col-md-4">
   <h2>Welcome Back</h2>
+
   <form ng-submit="authctrl.signIn(authctrl.newUser)">
     <input class="form-control" type="text" ng-model="authctrl.newUser.username" placeholder="username"></br>
     <input class="form-control" type="password" ng-model="authctrl.newUser.password" placeholder="password"></br>
@@ -30,7 +31,7 @@
 
   <br/>
 
-    <p ng-repeat="error in authctrl.errors">{{errors}}</p>
+    <li ng-repeat="error in authctrl.errors">{{error}}</li>
 
    </div>
    <div class="col-md-4 aboutpane">

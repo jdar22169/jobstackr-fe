@@ -13,18 +13,20 @@ module.exports = function(app){
       $location.url('/');
     };
     this.signUp = function(user){
-      AuthService.signUp(user);
+      AuthService.signUp(user)
+      .then(() => {
+        $location.url('/');
+      }, ErrorService.logError('Error in Sign Up: '));
     };
     this.signIn = function(user){
       AuthService.signIn(user)
       .then(() => {
         $location.url('/');
-      }, ErrorService.logError('Username/Password does not match. Try again')
-    );
+      }, ErrorService.logError('Error in Sign In: '));
     };
     this.signOut = function(){
       AuthService.signOut();
-      if (this.errors.length === 1) this.errors = [];
+      // if (this.errors.length === 1) this.errors = [];
       $location.url('/signin');
     };
 

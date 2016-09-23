@@ -13,9 +13,9 @@ module.exports = function(app) {
           $window.localStorage.token = token;
           $location.url('/');
           return res;
-        }, (err) => {
-          console.log(err);
-          $location.url('/signup');
+        // }, (err) => {
+        //   console.log(err);
+        //   $location.url('/signup');
         });
     };
 

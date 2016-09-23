@@ -7,8 +7,8 @@ module.exports = function(app){
 
     service.logError = function(message){
       return function(err){
-        console.log('service',err);
-        errors.push(message);
+        console.log('service', err);
+        errors.push(message + err.data.message);
       };
     };
     service.getErrors = function() {
